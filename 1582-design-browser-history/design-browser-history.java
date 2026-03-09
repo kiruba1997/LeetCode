@@ -1,42 +1,39 @@
-
-
 class BrowserHistory {
-    class Node {
-    String url;
-    Node prev;
-    Node next;
-
-    Node(String url) {
-        this.url = url;
+    class Node{
+        String url;
+        Node next;
+        Node prev;
+        Node(String url){
+            this.url = url;
+        }
     }
-    }
-    Node current;
-
+    int steps;
+    Node cur;
     public BrowserHistory(String homepage) {
-        current = new Node(homepage);
+        cur = new Node(homepage);
     }
     
     public void visit(String url) {
-       Node newNode = new Node(url);
-        current.next = newNode;
-        newNode.prev = current;
-        current = newNode; 
+        Node newnode = new Node(url);
+        cur.next = newnode;
+        newnode.prev = cur;
+        cur = cur.next;
     }
     
     public String back(int steps) {
-         while(steps > 0 && current.prev != null) {
-            current = current.prev;
+        while(steps>0 && cur.prev!=null){
+            cur = cur.prev;
             steps--;
         }
-        return current.url;
+        return cur.url;
     }
     
     public String forward(int steps) {
-        while(steps > 0 && current.next != null) {
-            current = current.next;
+        while(steps>0 && cur.next!=null){
+            cur = cur.next;
             steps--;
         }
-        return current.url;
+        return cur.url;
     }
 }
 
