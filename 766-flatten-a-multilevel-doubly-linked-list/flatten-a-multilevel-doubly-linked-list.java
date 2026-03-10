@@ -20,7 +20,6 @@ class Solution {
                 cur.next = flatten(cur.child);
                 cur.next.prev = cur;
                 cur.child = null;
-
                 while(cur.next!=null){
                     cur = cur.next;
                 }
