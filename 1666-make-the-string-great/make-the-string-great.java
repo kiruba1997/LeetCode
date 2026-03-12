@@ -1,27 +1,18 @@
-import java.util.*;
-
 class Solution {
     public String makeGood(String s) {
-
-        Stack<Character> stack = new Stack<>();
-
+        Stack<Character> st = new Stack<>();
         for(char c : s.toCharArray()){
-
-            if(!stack.isEmpty() && Math.abs(stack.peek() - c) == 32){
-                stack.pop();
+            if(!st.isEmpty() && Math.abs(st.peek() - c) == 32){
+                st.pop();
             }
             else{
-                stack.push(c);
-            }
-
+                st.push(c);
+            }         
+        } 
+        StringBuilder sb = new StringBuilder();
+        for(char c : st){
+            sb.append(c);
         }
-
-        StringBuilder result = new StringBuilder();
-
-        for(char c : stack){
-            result.append(c);
-        }
-
-        return result.toString();
+        return sb.toString();
     }
 }
