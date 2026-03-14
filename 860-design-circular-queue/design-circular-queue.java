@@ -22,19 +22,21 @@ class MyCircularQueue {
         return true;
 
     }
-    
     public boolean deQueue() {
         if(isEmpty()){
             return false;
         }
-        front = (front +1)%capacity;
+        // front = (front +1)%capacity;
+        front = front%capacity;
+        arr[front] = 0;
+        front = front+1 %capacity;
         size--;
         return true;
     }
     
     public int Front() {
         if(isEmpty()) return -1;
-        return arr[front];
+        return arr[front%capacity];
     }
     
     public int Rear() {
