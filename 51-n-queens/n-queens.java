@@ -26,28 +26,16 @@ class Solution {
         }
     }
     public boolean isSafe(char[][] board, int row, int col) {
-
     for(int i = 0; i < row; i++) {
-
-        // column check
         if(board[i][col] == 'Q')
             return false;
-
         for(int j = 0; j < board.length; j++) {
-
             if(board[i][j] == 'Q') {
-
-                // main diagonal check
-                if((i - j) == (row - col))
-                    return false;
-
-                // anti diagonal check
-                if((i + j) == (row + col))
+                if(Math.abs(row - i) == Math.abs(col - j))
                     return false;
             }
         }
     }
-
     return true;
 }
 }
