@@ -19,7 +19,24 @@ class Solution {
         if(root.val<=min || root.val>=max) return false;
         return isValid(root.left,min,root.val) && isValid(root.right,root.val,max);
     }
+    public void inOrder(TreeNode root, ArrayList<Integer> list){
+        if(root==null){
+            return;
+        }
+        inOrder(root.left,list);
+        list.add(root.val);
+        inOrder(root.right,list);
+    }
     public boolean isValidBST(TreeNode root) {
-        return isValid(root,Long.MIN_VALUE,Long.MAX_VALUE);
+        // return isValid(root,Long.MIN_VALUE,Long.MAX_VALUE);
+        ArrayList<Integer> list = new ArrayList<>();
+        inOrder(root,list);
+        for(int i=0;i<list.size()-1;i++){
+            if(list.get(i)>=list.get(i+1)){
+                return false;
+            }
+        }
+        return true;
+
     }
 }
