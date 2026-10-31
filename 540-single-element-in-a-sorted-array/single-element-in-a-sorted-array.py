@@ -2,14 +2,18 @@ class Solution(object):
     def singleNonDuplicate(self, nums):
         if len(nums)==1:
             return nums[0]
-        low = 0
-        while(low<len(nums)):
-            if low+1 < len(nums) and nums[low] == nums[low+1]:
-                low = low+2
+        left = 0
+        right = len(nums)-1
+        while(left<right):
+            mid = (left+right)//2
+            if (mid%2==1):
+                mid -=1
+            if nums[mid] == nums[mid+1]:
+                left = mid+2
             else:
-                return nums[low]
+                right = mid
         
-        return nums[low]        
+        return nums[left]        
        
       
         
