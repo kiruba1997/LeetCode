@@ -1,14 +1,15 @@
 class Solution(object):
     def singleNonDuplicate(self, nums):
-        n = len(nums)
-        if n==1:
+        if len(nums)==1:
             return nums[0]
-        i=0
-        while(i<n):
-            if (i<n-1) and nums[i] == nums[i+1]:
-                i=i+2
+        low = 0
+        while(low<len(nums)):
+            if low+1 < len(nums) and nums[low] == nums[low+1]:
+                low = low+2
             else:
-                return nums[i]
-        return 0
+                return nums[low]
         
+        return nums[low]        
+       
+      
         
