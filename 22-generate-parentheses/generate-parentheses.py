@@ -1,19 +1,16 @@
-class Solution:
-    def generateParenthesis(self, n: int) -> list[str]:
-        def backtrack(oc,cc,s,res):
-            if(len(s)==n*2):
+class Solution(object):
+    def generateParenthesis(self, n):
+        def backtrack(res,s,oc,cc):
+            if len(s)==n*2:
                 res.append(s)
                 return 
-            if(oc<n):
-                backtrack(oc+1,cc,s+"(",res)
-            if(cc<oc):
-                backtrack(oc,cc+1,s+")",res)
-    
+            if oc<n:
+                backtrack(res,s+"(",oc+1,cc)
+            if cc<oc:
+                backtrack(res,s+")",oc,cc+1)
+        result = []
+        backtrack(result,"",0,0)
+        return result
 
-        res = []
-        backtrack(0,0,"",res)
-        return res
-    
         
-
         
