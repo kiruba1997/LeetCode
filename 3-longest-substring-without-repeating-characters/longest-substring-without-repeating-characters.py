@@ -4,14 +4,11 @@ class Solution:
         seen = set()
         max_length = 0
         for right in range(len(s)):
-            if s[right] in seen:
-                while(s[right] in seen):
-                    seen.remove(s[left])
-                    left+=1
+            while(s[right] in seen):
+                seen.remove(s[left])
+                left+=1
             seen.add(s[right])
-            max_length = max(max_length,right-left+1)
+            cur_length = right-left+1
+            max_length = max(max_length,cur_length)
         return max_length
-
-
-
         
